@@ -5,7 +5,9 @@
 
 package com.smartlearn.prototype.model;
 
-
-class UserRole {
-
+public  enum UserRole {
+    INVESTORS,
+    PROPOSERS,
+    ADMIN,
+    USERS
 }

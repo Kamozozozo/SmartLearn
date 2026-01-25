@@ -1,11 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-package com.smartlearn.prototype.controller;
+package com.smartlearn.prototype.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-class RegisterRequest {
+@Data
+public class RegisterRequest{
+    @NotBlank(message="email is required")
+    @Email(message="invalid email request")
+    private String email;
+    @NotBlank(message="password is required")
+    @Size(min=6,message="password must be altleast 6 characters long")
+    private String password;
+    private String firstName;
+    private String LastName;
 
 }

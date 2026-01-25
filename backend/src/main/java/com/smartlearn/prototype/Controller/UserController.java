@@ -2,13 +2,10 @@ package  com.smartlearn.prototype.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.smartlearn.prototype.dtos.RegisterRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import com.smartlearn.prototype.dtos.RegisterReguest;
 import com.smartlearn.prototype.dtos.UserResponse;
 import com.smartlearn.prototype.services.UserService;
 
@@ -20,7 +17,7 @@ public class UserController{
     
     @PostMapping("/register")
     public ResponseEntitity<UserResponse> registerUser(@Valid @RequestBody RegisterRequest request){
-        return ResponseEntity.ok(request.register(request));
+        return ResponseEntity.ok(userService.register(request));
     }
     @GetMapping("/{userId}")
     public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userId){
