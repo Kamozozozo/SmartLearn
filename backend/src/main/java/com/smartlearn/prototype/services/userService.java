@@ -1,4 +1,5 @@
 package com.smartlearn.prototype.services;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smartlearn.prototype.dtos.UserResponse;
@@ -7,9 +8,8 @@ import  com.smartlearn.prototype.repo.UserRepository;
 import com.smartlearn.prototype.model.User;
 @Service
 public class UserService {
+    @Autowired
     private UserRepository userRepository;
-
-    
     public UserResponse getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not Found"));
         UserResponse userResponse = new UserResponse();
@@ -22,7 +22,7 @@ public class UserService {
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
     }
-    public UserResponse register(RegisterRequest request ){
+    public UserResponse register(RegisterRequest request){
         if(userRepository.existByEmail(request.getEmail())){
             throw new RuntimeException("email already exists");
         }
