@@ -15,7 +15,6 @@ public class UserService {
         User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not Found"));
         UserResponse userResponse = new UserResponse();
         userResponse.setId(user.getId());
-        userResponse.setPassword(user.getPassword());
         userResponse.setEmail(user.getEmail());
         userResponse.setFirstName(user.getFirstName());
         userResponse.setLastName(user.getLastName());
