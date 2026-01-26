@@ -15,13 +15,22 @@ public class UserService {
         User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not Found"));
         UserResponse userResponse = new UserResponse();
         userResponse.setId(user.getId());
-        userResponse.setPassword(user.getPassword());
         userResponse.setEmail(user.getEmail());
         userResponse.setFirstName(user.getFirstName());
         userResponse.setLastName(user.getLastName());
         userResponse.setCreatedAt(user.getCreatedAt());
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
+    }
+    public void DeleteUser(String userId){
+        boolean user = userRepository.existsById(userId);
+        if(user==true){
+            userRepository.deleteById(userId);
+            System.out.println("user deleted ");
+        }
+        else{
+            System.out.println("user dooesnt exist ");
+        }
     }
     public UserResponse register(RegisterRequest request){
         if(userRepository.existByEmail(request.getEmail())){
