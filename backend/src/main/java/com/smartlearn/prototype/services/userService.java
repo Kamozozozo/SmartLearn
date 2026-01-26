@@ -8,7 +8,6 @@ import  com.smartlearn.prototype.repo.UserRepository;
 import com.smartlearn.prototype.model.User;
 @Service
 public class UserService {
-    
     @Autowired
     private UserRepository userRepository;
     public UserResponse getUserProfile(String userId) {
