@@ -22,6 +22,16 @@ public class UserService {
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
     }
+    public void DeleteUser(String userId){
+        boolean user = userRepository.existsById(userId);
+        if(user==true){
+            userRepository.deleteById(userId);
+            System.out.println("user deleted ");
+        }
+        else{
+            System.out.println("user dooesnt exist ");
+        }
+    }
     public UserResponse register(RegisterRequest request){
         if(userRepository.existByEmail(request.getEmail())){
             throw new RuntimeException("email already exists");
