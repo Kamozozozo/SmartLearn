@@ -30,12 +30,11 @@ public class UserService {
         User user= new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
-        user.setFirstName(request.getFirstNam());
+        user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         User savedUser=userRepository.save(user);
         UserResponse userResponse = new UserResponse();
         userResponse.setId(savedUser.getId());
-        userResponse.setPassword(savedUser.getPassword());
         userResponse.setEmail(savedUser.getEmail());
         userResponse.setFirstName(savedUser.getFirstName());
         userResponse.setLastName(savedUser.getLastName());

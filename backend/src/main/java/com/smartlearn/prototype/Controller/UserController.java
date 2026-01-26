@@ -5,7 +5,8 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
-import com.smartlearn.prototype.dtos.RegisterReguest;
+import com.smartlearn.prototype.dtos.RegisterRequest;
+import jakarta.validation.Valid;
 import com.smartlearn.prototype.dtos.UserResponse;
 import com.smartlearn.prototype.services.UserService;
 
@@ -16,7 +17,7 @@ public class UserController{
     private UserService userService;
     
     @PostMapping("/register")
-    public ResponseEntitity<UserResponse> registerUser(@Valid @RequestBody RegisterRequest request){
+    public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody RegisterRequest request){
         return ResponseEntity.ok(userService.register(request));
     }
     @GetMapping("/{userId}")
