@@ -2,11 +2,11 @@ package com.smartlearn.prototype.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.smartlearn.prototype.dtos.UserResponse;
 import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UpdateRequest;
-import  com.smartlearn.prototype.repo.UserRepository;
-import com.smartlearn.prototype.model.User;
+import com.smartlearn.prototype.dtos.UserResponse;
+import  com.smartlearn.prototype.model.User;
+import com.smartlearn.prototype.repo.UserRepository;
 @Service
 public class UserService {
     @Autowired
