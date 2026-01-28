@@ -22,14 +22,15 @@ public class UserService{
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
     }
-    public void DeleteUser(String userId){
+    //@Transactional
+    public String DeleteUser(String userId){
         boolean user = userRepository.existsById(userId);
         if(user==true){
             userRepository.deleteById(userId);
-            System.out.println("user deleted ");
+            return "user deleted";
         }
         else{
-            System.out.println("user dooesnt exist ");
+            return "user dooesnt exist";
         }
     }
     public UserResponse updateUser(String userId,UpdateRequest request){

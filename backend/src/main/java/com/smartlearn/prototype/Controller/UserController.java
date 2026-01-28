@@ -2,11 +2,13 @@ package  com.smartlearn.prototype.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
+
 import com.smartlearn.prototype.dtos.RegisterRequest;
+import com.smartlearn.prototype.dtos.UpdateRequest;
+
 import jakarta.validation.Valid;
+
 import com.smartlearn.prototype.dtos.UserResponse;
 import com.smartlearn.prototype.services.UserService;
 
@@ -24,6 +26,14 @@ public class UserController{
     public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userId){
         return ResponseEntity.ok(userService.getUserProfile(userId));
     
+    }
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<String> deleteUserProfile(@PathVariable String userId){
+        return ResponseEntity.ok(userService.DeleteUser(userId));
+    }
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable String userId, @RequestBody UpdateRequest request ){
+        return ResponseEntity.ok(userService.updateUser(userId,request));
     }
     
 
