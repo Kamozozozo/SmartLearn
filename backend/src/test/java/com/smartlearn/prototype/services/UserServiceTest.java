@@ -24,7 +24,11 @@ public class UserServiceTest {
     void AddUserShouldAddUserSuccessFully(){
         RegisterRequest  request = new RegisterRequest();
         User user= new User();
-        
+        user.setId("1");
+        user.setEmail("kamozozobaete@gmail.com");
+        user.setPassword("kamo123");
+        user.setFirstName("kamogelo");
+        user.setLastName("Matabane");
         Mockito.when(userRepo.save(user)).thenReturn(user);
         UserResponse addedUser=userService.register(request);
         Assertions.assertNotNull(addedUser);
