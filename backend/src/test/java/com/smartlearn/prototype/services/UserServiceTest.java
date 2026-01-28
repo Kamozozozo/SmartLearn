@@ -1,5 +1,7 @@
 package com.smartlearn.prototype.services;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,11 +31,11 @@ public class UserServiceTest {
         user.setPassword("kamo123");
         user.setFirstName("kamogelo");
         user.setLastName("Matabane");
-        Mockito.when(userRepo.save(user)).thenReturn(user);
+        Mockito.when(userRepo.save(any(User.class))).thenReturn(user);
         UserResponse addedUser=userService.register(request);
         Assertions.assertNotNull(addedUser);
         Assertions.assertEquals("1",user.getId());
-        System.out.println("first test");
+        System.out.println("user added successfully");
     
     }
     
