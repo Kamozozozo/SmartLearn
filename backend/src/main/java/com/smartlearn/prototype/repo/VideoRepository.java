@@ -7,5 +7,4 @@ import com.smartlearn.prototype.model.UserVideo;
 
 @Repository
 public  interface  VideoRepository extends JpaRepository<UserVideo,String> {
-    
 }
