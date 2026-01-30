@@ -2,6 +2,7 @@ package com.smartlearn.prototype.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.smartlearn.prototype.model.UserVideo;
 import com.smartlearn.prototype.repo.VideoRepository;
 
@@ -33,6 +34,5 @@ public class VideoService {
         return "video doesnt exist";
     }
     public void getVideo(){
-
     }
 }
