@@ -1,4 +1,6 @@
 package com.smartlearn.prototype.services;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +60,7 @@ public class UserService{
             throw new RuntimeException("email already exists");
         }
         User user= new User();
-        UserVideo video=user.getVideos();
+        List<UserVideo> video=user.getVideos();
         if(video!=null){
             user.setVideos(video);
         }
