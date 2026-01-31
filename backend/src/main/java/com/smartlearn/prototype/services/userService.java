@@ -6,6 +6,7 @@ import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UpdateRequest;
 import com.smartlearn.prototype.dtos.UserResponse;
 import  com.smartlearn.prototype.model.User;
+import  com.smartlearn.prototype.model.UserVideo;
 import com.smartlearn.prototype.repo.UserRepository;
 @Service
 public class UserService{
@@ -57,6 +58,10 @@ public class UserService{
             throw new RuntimeException("email already exists");
         }
         User user= new User();
+        UserVideo video=user.getVideos();
+        if(video!=null){
+            user.setVideos(video);
+        }
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setFirstName(request.getFirstName());

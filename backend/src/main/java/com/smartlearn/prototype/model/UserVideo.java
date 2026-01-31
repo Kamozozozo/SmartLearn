@@ -32,7 +32,7 @@ public class UserVideo{
     @Column(name = "upload_date", nullable = false, updatable = false)
     private LocalDateTime uploadDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "featured_video_id", referencedColumnName = "id",nullable=false)
+    @JoinColumn(name = "userId", referencedColumnName = "id",nullable=false)
     @JsonBackReference 
     private User user;
 

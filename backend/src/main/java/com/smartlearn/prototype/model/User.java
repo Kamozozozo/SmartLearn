@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.smartlearn.prototype.model.UserVideo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -44,7 +45,7 @@ public class User{
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    @OneToMany(orphanRemoval = true)
+    @OneToMany(mappedBy="user",orphanRemoval = true,cascade=CascadeType.ALL)
     @JsonManagedReference
     private List<UserVideo> videos = new ArrayList<>();
 
