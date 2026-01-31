@@ -11,3 +11,14 @@
 .animate-marquee {
   animation: marquee 18s linear infinite;
 }
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+}
