@@ -8,12 +8,12 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start":"npm run dev"
+    "start": "npm run dev"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
-   
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
