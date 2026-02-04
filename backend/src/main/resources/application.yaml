@@ -1,0 +1,15 @@
+spring:
+      application:
+        name: prototype
+
+datasource:
+  url: ${DB_URL:jdbc:mysql://localhost:3306/smartlearn?useSSL=false&serverTimezone=UTC}
+  username: ${DB_USERNAME:root}
+  password: ${DB_PASSWORD:password}
+  
+jpa:
+  hibernate:
+    ddl-auto: update
+  show-sql: true
+server:
+  port: ${SERVER_PORT:9090}

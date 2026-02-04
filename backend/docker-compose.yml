@@ -1,0 +1,24 @@
+version: '1.0'
+services:
+    mysql:
+        image: mysql:8.0
+        container_name: mysql_db
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: smartlearn
+            MYSQL_USER: smartuser
+            MYSQL_PASSWORD: smartpassword
+        ports:
+            - "3306:3306"
+        volumes:
+            - db_data:/var/lib/mysql
+    app:
+    image: backend:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./src:/app/src
+volumes:
+    names-volume:
+    db_data:
