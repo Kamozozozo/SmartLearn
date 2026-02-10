@@ -1,4 +1,4 @@
-version: '1.0'
+
 services:
     mysql:
         image: mysql:8.0
@@ -14,11 +14,14 @@ services:
         volumes:
             - db_data:/var/lib/mysql
     app:
-    image: backend:latest
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./src:/app/src
+        image: backend:latest
+        ports:
+            - "9090:9090"
+        depends_on:
+            -mysql
+        volumes:
+        - ./src:/app/src
+        
 volumes:
     names-volume:
     db_data:
