@@ -17,10 +17,11 @@ services:
         image: backend:latest
         ports:
             - "9090:9090"
-        depends_on:
-            -mysql
+        
         volumes:
         - ./src:/app/src
+        depends_on:
+            - mysql
         
 volumes:
     names-volume:
