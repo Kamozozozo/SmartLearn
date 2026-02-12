@@ -1,27 +1,26 @@
 services:
   mysql:
-    image: mysql
+    image: mysql:8
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: smartlearn
-      MYSQL_USER: smartuser
-      MYSQL_PASSWORD: smartpassword
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
+      
 
   app:
-    build: .
     image: backend
     ports:
       - "9090:9090"
+    environment:
+      SERVER_PORT: 9090
+      DB_HOST: mysql_db
     volumes:
-      - ./src:/app/src
-    depends_on:
-      - mysql
-
+      - names-volumes:/app
 volumes:
-  db_data:
+  names-volumes:
+  mysql-data:
