@@ -2,7 +2,7 @@ import React from 'react';
 
 const Highlights = () => {
   return (
-    <div className="py-4">
+    <div className="py-4 ">
       <div className="flex overflow-x-auto space-x-4 px-4 scrollbar-hid no-scrollbar">
       
         <div className="flex-shrink-0 w-[33.33vw] h-60 bg-red-50 rounded-xl shadow-lg flex items-center justify-center">

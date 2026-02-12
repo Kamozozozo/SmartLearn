@@ -38,9 +38,14 @@ const MenuBar = () => {
             >
               {link.label}
             </a>
+            
           ))}
+          <div className=" justify-end gap-2">
+          <button className="px-4 py-2 text-sm text-muted-foreground hover:text-white rounded-full hover:bg-white/10 transition-all duration-200">register </button>
+        <button className="px-4 py-2 text-sm text-muted-foreground hover:text-white rounded-full hover:bg-white/10 transition-all duration-200">login</button>
         </div>
 
+        </div>
         {/* Button */}
         <div className="hidden md:block">
         </div>
@@ -65,6 +70,8 @@ const MenuBar = () => {
               {link.label}
             </a>
           ))}
+           <button className="text-lg text-muted-foreground hover:text-foreground py-2 bg-primary rounded-full">register </button>
+        <button className="text-lg text-muted-foreground hover:text-foreground py-2 bg-primary rounded-full">login</button>
         </div>
         
       </div>
