@@ -1,4 +1,158 @@
 @import "tailwindcss";
+
+@theme{
+  --color-background: #0f1418;
+  --color-foreground: #f0f2f5;
+  --color-card: #141a1f;
+  --color-primary: #33d4ac;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #120b2a;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #252e37;
+  --color-muted-foreground: #7a8491;
+  --color-border: #242b32;
+  --radius: 0.75rem;
+  --color-highlight: #f5a623;
+  --color-surface: #1a2329;
+
+}
+
+@layer base {
+  html{
+  scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: 'Inter', sans-serif;
+  }
+  .font-serif{
+    font-family: 'Playfair Display', serif;
+  }
+}
+@layer components{
+   .glass{
+    background-color: color-mix(in srgb,var(--color-surface 50%), transparent);
+    backdrop-filter:blur(16px);
+    border:1px solid color-mix(in srgb,var(--color-border) 50%, transparent)
+   }
+   .glass-strong{
+    background-color: color-mix(in srgb,var(--color-surface 80%), transparent);
+    backdrop-filter:blur(16px);
+    border:1px solid color-mix(in srgb,var(--color-border) 60%, transparent)
+   }
+   .glow-text{
+    text-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 50%, transparent)
+   }
+   .glow-border{
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+   }
+}
+@layer utilities{
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform:translateY(20px);
+      filter:blur(10px)
+    }
+    to {
+      opacity: 1;
+      transform:translateY(0);
+      filter:blur(0)
+    }
+  }
+@layer utilities{
+  @keyframes slow-drift {
+    0% {
+      transform: translateY(0px);
+    }
+   100%{
+      transform: translateY(0,0);
+
+   };
+   25% {
+      transform: translateY(20px,-30px);
+    }
+    50% {
+      transform: translateY(-15px,-20px);
+    }
+    75% {
+      transform: translateY(30px,10px);
+    }
+  }
+} 
+@keyframes float{
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in{
+    animation:fade-in 0.9 ease-out both;
+  }
+  .animation-dalay-100{
+    animation-delay: 100ms;
+  }
+  .animation-delay-200{
+    animation-delay: 200ms;
+  }
+  .animation-delay-300{
+    animation-delay: 300ms;
+  }
+  .animation-delay-400{
+    animation-delay: 400ms;
+  }
+  .animation-delay-500{
+    animation-delay: 500ms;
+  }
+  .animation-delay-600{
+    animation-delay: 600ms;
+  }
+  .animation-delay-700{
+    animation-delay: 700ms;
+  }
+  .animation-delay-800{
+    animation-delay: 800ms;
+  }
+  .animate-float{
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes marque{
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee{
+    animation: marque 30s linear infinite;
+  }
+  @keyframes animated-border {
+    0% {
+      stroke-dashoffset: 400;
+    }
+    50% {
+      stroke-dashoffset: -550;
+    }
+  }
+  
+  .group:hover .animated-border-path{
+    animation: animated-border 1.5s linear infinite;
+  }
+  .animated-border:hover{
+     background-color: color-mix(in srgb,#26c4b8 15%, transparent);
+    backdrop-filter:blur(16px);
+    border: 0 0 20px color-mix(in srgb,#26c4b8 20%, transparent)
+
+  }
+}
 @keyframes marquee {
   0% {
     transform: translateX(0%);
