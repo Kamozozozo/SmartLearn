@@ -1,0 +1,20 @@
+GET  http://localhost:9090/api/user/d1aa1d86-34b7-463b-b0eb-9a6c17ece5a9
+
+
+######
+POST http://localhost:9090/api/user/register
+Content-Type: application/json
+
+{
+    "email": "kamogeloMatabane@example.com",
+    "password": "password123",
+    "firstName": "kamogelo",
+    "LastName": "matabane",
+    "role": "USERS",
+    "videos": []
+
+}
+
+###
+DELETE http://localhost:9090/api/user/d1aa1d86-34b7-463b-b0eb-9a6c17ece5a9
+
