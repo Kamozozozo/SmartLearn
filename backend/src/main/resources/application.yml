@@ -1,15 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:mysql_db}:${3306}/${DB_NAME:smartlearn}
+    url: jdbc:h2:mem:testdb
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:root}
-    
-
+ 
+  h2:
+    console:
+        enabled: true
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    
+
 server:
   port: ${SERVER_PORT:9090}
 app:

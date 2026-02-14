@@ -7,6 +7,6 @@ import com.smartlearn.prototype.model.User;
 
 @Repository
 public  interface  UserRepository extends JpaRepository<User,String> {
-    boolean existByEmail(String email);
+    boolean existsByEmail(String email);
     
 }
