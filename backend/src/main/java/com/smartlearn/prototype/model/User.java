@@ -50,7 +50,7 @@ public class User{
     private List<Jobs> jobs = new ArrayList<>();
     
     public void addVideo(UserVideo video){
-        if(this.role==UserRole.PROPOSERS){
+        if(this.role==UserRole.PROPOSER){
             this.videos.add(video);
             video.setUser(this);
         }
@@ -59,7 +59,7 @@ public class User{
         }
     }
      public void addJobs(Jobs job){
-        if(this.role==UserRole.PROPOSERS){
+        if(this.role==UserRole.PROPOSER){
             this.jobs.add(job);
             job.setUser(this);
         }
