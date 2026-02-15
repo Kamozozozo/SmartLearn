@@ -3,7 +3,6 @@ package com.smartlearn.prototype.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -56,7 +55,17 @@ public class User{
             video.setUser(this);
         }
         else{
-            throw new IllegalStateException("only proposes can have videos" );
+            throw new IllegalStateException("only proposers can have videos" );
         }
     }
+     public void addJobs(Jobs job){
+        if(this.role==UserRole.PROPOSERS){
+            this.jobs.add(job);
+            job.setUser(this);
+        }
+        else{
+            throw new IllegalStateException("only proposers can have jobs" );
+        }
+    }
+    
 }
