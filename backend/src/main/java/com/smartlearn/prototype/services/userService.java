@@ -1,4 +1,5 @@
 package com.smartlearn.prototype.services;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UpdateRequest;
 import com.smartlearn.prototype.dtos.UserResponse;
+import com.smartlearn.prototype.model.Jobs;
 import  com.smartlearn.prototype.model.User;
+import com.smartlearn.prototype.model.UserRole;
 import  com.smartlearn.prototype.model.UserVideo;
 import com.smartlearn.prototype.repo.UserRepository;
 @Service
@@ -61,8 +64,18 @@ public class UserService{
         }
         User user= new User();
         List<UserVideo> video=user.getVideos();
-        if(video!=null){
+        List<Jobs> job=user.getJobs();
+        UserRole selectedRole=UserRole.valueOf(request.getRole().toString().toUpperCase());
+        user.setRole(selectedRole);
+        if(selectedRole==UserRole.USER || selectedRole==UserRole.INVESTOR){
+            user.setVideos(new ArrayList<>());
+            user.setJobs(new ArrayList<>());
+        }
+        else if(selectedRole==UserRole.PROPOSER){
             user.setVideos(video);
+            user.setJobs(job);
+        }else{
+            throw new RuntimeException("invalid Role");
         }
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
