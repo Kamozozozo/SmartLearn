@@ -6,3 +6,5 @@ this project is for startups to abe able to find sponsors think of it as a TheSh
 
 
 CI/CD will be automated
+
+i want this to microservices so i will migrate and continue to as microservices
