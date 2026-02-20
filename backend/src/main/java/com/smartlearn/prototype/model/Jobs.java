@@ -35,6 +35,9 @@ public class Jobs {
     private String descriptions;
     @Column(nullable=false)
     private String company;
+    private String jobType;
+    private String location;
+    private String salary;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
