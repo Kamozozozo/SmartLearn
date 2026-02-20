@@ -10,8 +10,10 @@ import jakarta.persistence.EnumType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Builder;
 
 @Data
+@Builder
 public class RegisterRequest{
     @NotBlank(message="email is required")
     @Email(message="invalid email request")
