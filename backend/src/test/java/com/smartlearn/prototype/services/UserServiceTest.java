@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.smartlearn.prototype.Interfaces.IUserService;
 import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UserResponse;
 import com.smartlearn.prototype.model.User;
@@ -21,7 +22,7 @@ public class UserServiceTest {
     @Mock
     UserRepository userRepo;
     @InjectMocks
-    UserService userService;
+    IUserService userService;
     @Test
     void AddUserShouldAddUserSuccessFully(){
         RegisterRequest  request = new RegisterRequest();

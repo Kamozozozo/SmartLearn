@@ -4,19 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.smartlearn.prototype.Interfaces.IUserService;
 import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UpdateRequest;
 
 import jakarta.validation.Valid;
 
 import com.smartlearn.prototype.dtos.UserResponse;
-import com.smartlearn.prototype.services.UserService;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController{
     @Autowired
-    private UserService userService;
+    private IUserService userService;
     
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody RegisterRequest request){

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.smartlearn.prototype.Interfaces.IUserService;
 import com.smartlearn.prototype.dtos.RegisterRequest;
 import com.smartlearn.prototype.dtos.UpdateRequest;
 import com.smartlearn.prototype.dtos.UserResponse;
@@ -16,8 +17,9 @@ import com.smartlearn.prototype.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
-public class UserService{
+public class UserService implements IUserService{
     private final UserRepository userRepository;
+    @Override
     public UserResponse getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not Found"));
         UserResponse userResponse =  UserResponse.builder()
@@ -31,6 +33,7 @@ public class UserService{
         return userResponse;
     }
     //@Transactional
+    @Override
     public String DeleteUser(String userId){
         boolean user = userRepository.existsById(userId);
         if(user==true){
@@ -41,6 +44,7 @@ public class UserService{
             return "user dooesnt exist";
         }
     }
+    @Override
     public UserResponse updateUser(String userId,UpdateRequest request){
         if(!userRepository.existsById(userId)){
             throw new RuntimeException("user doesnt exists");
@@ -61,6 +65,7 @@ public class UserService{
         return userResponse;
 
     }
+    @Override
     public UserResponse register(RegisterRequest request){
         if(userRepository.existsByEmail(request.getEmail())){
             throw new RuntimeException("email already exists");
