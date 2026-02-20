@@ -13,19 +13,21 @@ import  com.smartlearn.prototype.model.User;
 import com.smartlearn.prototype.model.UserRole;
 import  com.smartlearn.prototype.model.UserVideo;
 import com.smartlearn.prototype.repo.UserRepository;
+import lombok.RequiredArgsConstructor;
 @Service
+@RequiredArgsConstructor
 public class UserService{
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     public UserResponse getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not Found"));
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(user.getId());
-        userResponse.setEmail(user.getEmail());
-        userResponse.setFirstName(user.getFirstName());
-        userResponse.setLastName(user.getLastName());
-        userResponse.setCreatedAt(user.getCreatedAt());
-        userResponse.setUpdatedAt(user.getUpdatedAt());
+        UserResponse userResponse =  UserResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .LastName(user.getLastName())
+                .createdAt(user.getCreatedAt())
+                .updatedAt(user.getUpdatedAt())
+                .build();
         return userResponse;
     }
     //@Transactional
@@ -48,13 +50,14 @@ public class UserService{
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         userRepository.save(user);
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(user.getId());
-        userResponse.setEmail(user.getEmail());
-        userResponse.setFirstName(user.getFirstName());
-        userResponse.setLastName(user.getLastName());
-        userResponse.setCreatedAt(user.getCreatedAt());
-        userResponse.setUpdatedAt(user.getUpdatedAt());
+         UserResponse userResponse =  UserResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .LastName(user.getLastName())
+                .createdAt(user.getCreatedAt())
+                .updatedAt(user.getUpdatedAt())
+                .build();
         return userResponse;
 
     }
@@ -82,13 +85,14 @@ public class UserService{
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         User savedUser=userRepository.save(user);
-        UserResponse userResponse = new UserResponse();
-        userResponse.setId(savedUser.getId());
-        userResponse.setEmail(savedUser.getEmail());
-        userResponse.setFirstName(savedUser.getFirstName());
-        userResponse.setLastName(savedUser.getLastName());
-        userResponse.setCreatedAt(savedUser.getCreatedAt());
-        userResponse.setUpdatedAt(savedUser.getUpdatedAt());
+         UserResponse userResponse =  UserResponse.builder()
+                .id(savedUser.getId())
+                .email(savedUser.getEmail())
+                .firstName(savedUser.getFirstName())
+                .LastName(savedUser.getLastName())
+                .createdAt(savedUser.getCreatedAt())
+                .updatedAt(savedUser.getUpdatedAt())
+                .build();
         return userResponse;
 
     }
