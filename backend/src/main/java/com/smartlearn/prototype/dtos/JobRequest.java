@@ -14,6 +14,9 @@ public class JobRequest {
     private String descriptions;
     @NotBlank(message="company is required")
     private String company;
+    private String jobType;
+    private String location;
+    private String salary;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     

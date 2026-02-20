@@ -9,6 +9,9 @@ public class JobResponse {
     private String id;
     private String descriptions;
     private String company;
+    private String jobType;
+    private String location;
+    private String salary;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
