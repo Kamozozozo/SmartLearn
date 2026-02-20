@@ -11,12 +11,15 @@ import com.smartlearn.prototype.dtos.UpdateRequest;
 import jakarta.validation.Valid;
 
 import com.smartlearn.prototype.dtos.UserResponse;
+import com.smartlearn.prototype.services.UserService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/user")
+@RequiredArgsConstructor
 public class UserController{
-    @Autowired
-    private IUserService userService;
+    private  final UserService userService;
     
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody RegisterRequest request){
