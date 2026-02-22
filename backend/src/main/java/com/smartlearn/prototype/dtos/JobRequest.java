@@ -17,7 +17,4 @@ public class JobRequest {
     private String jobType;
     private String location;
     private String salary;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    
 }
