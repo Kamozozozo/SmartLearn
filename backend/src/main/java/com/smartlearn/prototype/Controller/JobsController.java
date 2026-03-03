@@ -10,30 +10,42 @@ import com.smartlearn.prototype.dtos.JobRequest;
 import com.smartlearn.prototype.dtos.JobResponse;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
+import com.smartlearn.prototype.services.JobsService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
 @RequestMapping("/api/jobs")
+@RequiredArgsConstructor
 public class JobsController {
+    private final JobsService jobsService;
+
     @PostMapping
-    public JobResponse createJob(JobRequest request){
-        
+    public ResponseEntity<JobResponse> createJob(@RequestBody JobRequest request){
+        return ResponseEntity.status(HttpStatus.CREATED).body(jobsService.createJob(request));
 
     }
     @GetMapping("/{jobId}")
-    public JobResponse getJobById(String jobId){
+    public ResponseEntity<JobResponse> getJobById(@PathVariable String jobId){
+        return ResponseEntity.ok(jobsService.getJobById(jobId));
 
     }
     @GetMapping
-    public List<JobResponse> getAllJobs(){
+    public ResponseEntity<List<JobResponse>> getAllJobs(){
+        return ResponseEntity.ok(jobsService.getAllJobs());
         
     }
     @PutMapping("/{jobId}")
-    public JobResponse updateJob(@PathVariable String jobId, JobRequest request){
-
+    public ResponseEntity<JobResponse> updateJob(@PathVariable  String jobId,@RequestBody JobRequest request){
+        return ResponseEntity.ok(jobsService.updateJob(jobId,request));
     }
     @DeleteMapping("/{jobId}")
-    public String deleteJob(@PathVariable String jobId){
+    public ResponseEntity<?> deleteJob(@PathVariable String jobId){
+        jobsService.deleteJob(jobId);
+        return ResponseEntity.noContent().build();
 
     }
     /* 
