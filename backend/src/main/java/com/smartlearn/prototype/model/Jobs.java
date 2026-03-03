@@ -30,9 +30,9 @@ public class Jobs {
     @Id
     @GeneratedValue(strategy=GenerationType.UUID)
     private String id;
-    @Column(unique=true,nullable=false)
+   //// @Column(unique=true,nullable=false)
     private String descriptions;
-    @Column(nullable=false)
+    //@Column(nullable=false)
     private String company;
     private String jobType;
     private String location;
@@ -42,7 +42,7 @@ public class Jobs {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", referencedColumnName = "id",nullable=false)
+    @JoinColumn(name = "userId", referencedColumnName = "id")//nullable=false
     @JsonBackReference 
     private User user;
 }

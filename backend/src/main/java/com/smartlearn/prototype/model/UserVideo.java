@@ -26,7 +26,7 @@ public class UserVideo{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String title;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String url;
     private String resolution;
     @Column(name = "upload_date", nullable = false, updatable = false)
