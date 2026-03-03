@@ -10,7 +10,7 @@ public interface Ijobs {
     JobResponse getJobById(String jobId);
     List<JobResponse> getAllJobs();
     JobResponse updateJob(String jobId, JobRequest request);
-    String deleteJob(String jobId);
+    void deleteJob(String jobId);
     JobResponse applyForJob(String jobId, String userId);
     
 }
