@@ -1,4 +1,4 @@
-GET  http://localhost:9090/api/user/d1aa1d86-34b7-463b-b0eb-9a6c17ece5a9
+GET  http://localhost:9090/api/user/5f44d520-550b-45c3-9040-f12de3add2cc
 
 
 ######
@@ -7,14 +7,50 @@ Content-Type: application/json
 
 {
     "email": "kamogeloMatabane@example.com",
+    "role": "USER",
     "password": "password123",
     "firstName": "kamogelo",
-    "LastName": "matabane",
-    "role": "USERS",
-    "videos": []
+    "LastName": "matabane"
 
 }
 
-###
+###    
 DELETE http://localhost:9090/api/user/d1aa1d86-34b7-463b-b0eb-9a6c17ece5a9
 
+############
+
+POST http://localhost:9090/api/jobs
+Content-Type: application/json
+
+{
+    "descriptions": "Software Engineer position",
+    "company": "TechCorp",
+    "jobType": "Full-time",
+    "location": "San Francisco",
+    "salary": "$120,000",
+    "email": "kamogeloMatabane@example.com"
+}
+########
+
+
+GET http://localhost:9090/api/jobs/1b55cd35-d37d-43dc-82c9-1fba1d6b7b9f
+
+########
+GET http://localhost:9090/api/jobs
+
+
+######
+PUT http://localhost:9090/api/jobs/ec7e7e7e-8428-42fd-a822-5fca5dd891b9
+Content-Type: application/json
+
+{
+
+    "descriptions": "Senior Software Engineer position",
+    "company": "TechCorp",
+    "jobType": "Full-time",
+    "location": "San Francisco",
+    "salary": "$150,000"
+}
+######
+
+DELETE http://localhost:9090/api/jobs/1b55cd35-d37d-43dc-82c9-1fba1d6b7b9f
