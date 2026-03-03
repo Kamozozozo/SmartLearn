@@ -59,26 +59,57 @@ public class JobsService implements Ijobs {
     
         @Override
         public List<JobResponse> getAllJobs() {
-            
-            // TODO Auto-generated method stub
-            return null;
+            List<Jobs> jobs = jobRepository.findAll();
+            List<JobResponse> jobResponses = jobs.stream().map(job -> JobResponse.builder()
+            .id(job.getId())
+            .descriptions(job.getDescriptions())
+            .company(job.getCompany())
+            .jobType(job.getJobType())
+            .location(job.getLocation())
+            .salary(job.getSalary())
+            .createdAt(job.getCreatedAt())
+            .updatedAt(job.getUpdatedAt())
+            .build()).toList();
+            return jobResponses;
         }
     
         @Override
         public JobResponse updateJob(String jobId, JobRequest request) {
             // TODO Auto-generated method stub
-            return null;
+            Jobs job = jobRepository.findById(jobId).orElseThrow(()-> new RuntimeException("job doesnt exist"));
+            job.setDescriptions(request.getDescriptions());
+            job.setCompany(request.getCompany());
+            job.setJobType(request.getJobType());
+            job.setLocation(request.getLocation());
+            job.setSalary(request.getSalary());
+            Jobs updatedJob=jobRepository.save(job);
+            JobResponse jobResponse=JobResponse.builder()
+            .id(updatedJob.getId())
+            .descriptions(updatedJob.getDescriptions())
+            .company(updatedJob.getCompany())
+            .jobType(updatedJob.getJobType())
+            .location(updatedJob.getLocation())
+            .salary(updatedJob.getSalary())
+            .createdAt(updatedJob.getCreatedAt())
+            .updatedAt(updatedJob.getUpdatedAt())
+            .build();
+            return jobResponse;
         }
     
         @Override
-        public String deleteJob(String jobId) {
+        public void deleteJob(String jobId) {
             // TODO Auto-generated method stub
-            return null;
+            if(jobRepository.existsById(jobId)){
+                jobRepository.deleteById(jobId);
+            }
+            else{
+                throw new RuntimeException("job doesn't exist");
+            }
         }
-    
         @Override
         public JobResponse applyForJob(String jobId, String userId) {
             // TODO Auto-generated method stub
+
             return null;
         }
 }
