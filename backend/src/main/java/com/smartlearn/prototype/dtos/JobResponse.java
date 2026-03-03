@@ -3,8 +3,12 @@ package com.smartlearn.prototype.dtos;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobResponse {
     private String id;
     private String descriptions;
