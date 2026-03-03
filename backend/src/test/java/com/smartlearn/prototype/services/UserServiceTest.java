@@ -25,7 +25,7 @@ public class UserServiceTest {
     IUserService userService;
     @Test
     void AddUserShouldAddUserSuccessFully(){
-        RegisterRequest  request = new RegisterRequest();
+        RegisterRequest  request = new RegisterRequest(null, null, null, null, null);
         User user= new User();
         user.setId("1");
         user.setEmail("kamozozobaete@gmail.com");
